@@ -1,0 +1,57 @@
+﻿@page "/Products/{id}/Edit/"
+@model WebRazorAppProducts.Pages.Products.EditModel
+@{
+}
+
+
+<h2 class="text-primary mb-5">Update a Product</h2>
+
+<form method="POST">
+     
+    <div class="mb-5">
+        <label for="name" class="form-label">Όνομα Προϊόντος</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" name="name" id="name" placeholder="Enter a product name" value="@Model.ProductUpdateDTO!.Name"/>
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <label for="description" class="form-label">Περιγραφή</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" name="description" id="description" placeholder="Enter a description" value="@Model.ProductUpdateDTO!.Description" />
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <label for="price" class="form-label">Τιμή</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" name="price" id="price" placeholder="Enter a price" value="@Model.ProductUpdateDTO!.Price" />
+        </div>
+    </div>
+
+    <div>
+        <div class="row mb-3">
+            <div class="offset-md-1 col-md-3 d-grid">               @* αφήνει ένα column και ξεκινάει μετά. Επίσης grid ωστε να ειναι και το Button 3 col *@
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="offset-md-1 col-md-3 d-grid">
+                <a class="btn btn-outline-primary" href="/Products/Index">Cancel</a>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<div>
+    @if (Model.ErrorArray != null)
+    {
+        @foreach (var error in Model.ErrorArray)
+        {
+            <div>
+                <p>@error.Message</p>
+            </div>
+        }
+    }
+</div>
